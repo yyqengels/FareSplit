@@ -1,12 +1,14 @@
 import numpy as np
 import copy
+#########################
+# A toy example
+#########################
+
 
 userNum = 5
 Adj_Matrix = np.zeros(shape = (userNum, userNum))
 
-#########################
-# A toy example
-#########################
+
 # Initialize the adjacency matrix
 for i in range(userNum):
     for j in range(userNum):
@@ -15,8 +17,14 @@ for i in range(userNum):
 # Set the diagonal to 0
 Adj_Matrix[range(userNum),range(userNum)] = 0
 ############################
-#Prepare for Error Check
+## Prepare for Error Check
+# Everyone's net amoount
+Net_Amount = np.zeros(shape = (1, userNum))
+for i in range(userNum):
+    Net_Amount[0,i] = np.sum(Adj_Matrix[:,i]) - np.sum(Adj_Matrix[i,:])
 
+# Check if the matrix is generated correctly
+np.sum(Net_Amount)
 
 
 # The basic algorithm (can add more constraints later on)
@@ -51,12 +59,29 @@ while(True):
         else:
             Adj_Matrix[row_num, col_num] = 0
             Adj_Matrix[col_num, row_num] = -temp1
+        del temp1
     
     Adj_Matrix[row_num, col_num1] = Adj_Matrix[row_num, col_num1] - temp
     Adj_Matrix[col_num1,col_num] = Adj_Matrix[col_num1,col_num] - temp
+    del temp
+###################################
+## Error Check
+# Check 1: 
+# Everyone's net amount should remain the same after the algorithm
+Net_Amount_Check = np.zeros(shape = (1, userNum))
+for i in range(userNum):
+    Net_Amount_Check[0,i] = np.sum(Adj_Matrix[:,i]) - np.sum(Adj_Matrix[i,:])
 
+tolerance = 1e-5
+check1 = Net_Amount_Check - Net_Amount
+check1[np.where(abs(check1) <= tolerance)] = 0
+if np.count_nonzero(check1) == 0:
+    print("Pass Check 1")
 
-
-
-
-
+# Check 2:
+# The total net amount should be 0
+check2 = np.sum(Net_Amount_Check)
+if abs(check2) <= tolerance:
+    check2 = 0
+if np.sum(Net_Amount_Check) == 0:
+    print("Pass Check 2")
