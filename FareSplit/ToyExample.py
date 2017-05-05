@@ -5,7 +5,7 @@ import copy
 #########################
 
 
-userNum = 5
+userNum = 30
 Adj_Matrix = np.zeros(shape = (userNum, userNum))
 
 
