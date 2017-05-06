@@ -39,7 +39,7 @@ payer = np.array(payer)
 pay_num = np.array(pay_num)
 pay_prop = pay_num / sum(pay_num)
 # Check all elements of payer are in user
-
+# User interface can probably resolve this issue
 
 row_index = np.zeros(shape = (1, len(payer)))
 for i in range(len(payer)):
@@ -74,32 +74,31 @@ if sum(debt) != sum(pay_num):
     print("If no, you will need to go back and change the debt.\n")
     proceed = input("Y/N: ")
 
-
+# Can be resolved by user interface
 
 if go_dutch == "Y":
     debt = np.zeros(shape = len(payee))
     debt[:] = np.mean(pay_num)
-    
 
 
 col_index = np.zeros(shape = (1, len(payee)))
 for i in range(len(payee)):
     col_index[0,i] = np.where(user == payee[i])[0][0]
 
-# 
+
+# Update the Adjacency matrix
+for i in row_index:
+    for j in col_index:
+        if i == j:
+            continue
+        Adj_Matrix[i, j] = debt[j] * pay_prop[i]
 
 
-
-
-
-
-
-
+# Some more users?
 
 
 
 
 ####
-
 #np.append(Adj_Matrix , , axix = 1)
   
