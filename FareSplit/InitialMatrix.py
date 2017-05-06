@@ -1,23 +1,22 @@
 import numpy as np
-from miscellaneous import user_names
-from miscellaneous import initial_matrix
-
+import miscellaneous as misc
+misc.financial_activity()
 # First, we need to prompt the user for 
 # a list of user names
-user = user_names()
+user = misc.user_names()
 
 ##
 # Check if there are duplicated names
 ##
 
 # Initialize the adjacency matrix
-Adj_Matrix = initial_matrix(user)
+Adj_Matrix = misc.initial_matrix(usernames = user)
 
 ########
 # Secondly, we need to prompt the user for 
 # financial activities
 
-
+misc.foo
 # Who paid for the service?
 payer = []
 pay_num = []
@@ -61,8 +60,8 @@ payee = np.array(payee)
 
 if sum(debt) != sum(pay_num):
     print("The sum of debt is not equal to the price of the service\n")
-    print("The sum of debt is " + sum(debt) + "\n")
-    print("The price of the service is " + sum(pay_num) + "\n")
+    print("The sum of debt is " + str(sum(debt)) + "\n")
+    print("The price of the service is " + str(sum(pay_num)) + "\n")
     print("Do you want to proceed?\n")
     print("If yes, we are going to assume that the price of the service is the sum of debt.\n")
     print("If no, you will need to go back and change the debt.\n")
