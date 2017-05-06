@@ -1,23 +1,17 @@
-# This function will prompt the user for user input
-# and initialize the adjacency matrix
 import numpy as np
+from miscellaneous import user_names
+from miscellaneous import initial_matrix
+
 # First, we need to prompt the user for 
 # a list of user names
-user = []
-while True:
-    user = user + [input("Please input a user name: ")]
-    print("Add another user?")
-    another = input("Y/N: ")
-    if another == "N":
-        break
+user = user_names()
 
-user = np.array(user)
 ##
-# Can check if there are duplicated names
+# Check if there are duplicated names
+##
 
 # Initialize the adjacency matrix
-userNum = len(user)
-Adj_Matrix = np.zeros(shape = (userNum, userNum)) 
+Adj_Matrix = initial_matrix(user)
 
 ########
 # Secondly, we need to prompt the user for 
