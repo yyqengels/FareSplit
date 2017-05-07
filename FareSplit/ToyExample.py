@@ -1,10 +1,12 @@
 import numpy as np
 import copy
+import InitialMatrix
+Adj_Matrix = InitialMatrix.gen_matrix()
 #########################
 # A toy example
 #########################
 
-
+##################
 userNum = 30
 Adj_Matrix = np.zeros(shape = (userNum, userNum))
 
