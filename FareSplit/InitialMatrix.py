@@ -1,14 +1,12 @@
 import numpy as np
 import miscellaneous as misc
-misc.financial_activity()
+
 # First, we need to prompt the user for 
 # a list of user names
 user = misc.user_names()
-
 ##
 # Check if there are duplicated names
 ##
-
 # Initialize the adjacency matrix
 Adj_Matrix = misc.initial_matrix(usernames = user)
 
@@ -16,7 +14,7 @@ Adj_Matrix = misc.initial_matrix(usernames = user)
 # Secondly, we need to prompt the user for 
 # financial activities
 
-misc.foo
+
 # Who paid for the service?
 payer = []
 pay_num = []
@@ -84,7 +82,7 @@ for i in row_index:
     for j in col_index:
         if i == j:
             continue
-        Adj_Matrix[i, j] = debt[j] * pay_prop[i]
+        Adj_Matrix[i, j] = Adj_Matrix[i, j] + debt[j] * pay_prop[i]
 
 
 # Some more users?
