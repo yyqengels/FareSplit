@@ -85,5 +85,24 @@ if np.count_nonzero(check1) == 0:
 check2 = np.sum(Net_Amount_Check)
 if abs(check2) <= tolerance:
     check2 = 0
-if np.sum(Net_Amount_Check) == 0:
+if check2 == 0:
     print("Pass Check 2")
+
+###################################
+# Result output
+# We can print out a list containing the information of who owes what to whom
+# Or we can use the package (hopefully) igraph to print out a directed graph
+# to illustrate the result
+########
+# Method 1: List
+user = range(userNum)
+
+for i in range(userNum):
+    for j in range(userNum):
+        if Adj_Matrix[i,j] == 0:
+            continue
+        print("User " + str(user[i]) + " owes " + str(user[j]) + " "+str(Adj_Matrix[i, j]) + " dollars.")
+        
+# Method 2: Directed graph (coming up)
+
+
