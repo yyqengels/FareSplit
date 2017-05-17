@@ -7,7 +7,7 @@ Adj_Matrix = InitialMatrix.gen_matrix()
 #########################
 
 ##################
-userNum = 30
+userNum = 5
 Adj_Matrix = np.zeros(shape = (userNum, userNum))
 
 
@@ -42,8 +42,9 @@ while(True):
     Unweighted_Adj = copy.deepcopy(Adj_Matrix)
     Unweighted_Adj[np.where(Unweighted_Adj != 0)] = 1
     Unweighted_Adj_Square = np.matmul(Unweighted_Adj, Unweighted_Adj)
-    Unweighted_Adj_Square[np.where(Unweighted_Adj_Square != 0)] = 1
-    index = np.where((Unweighted_Adj_Square - Unweighted_Adj) == 1)
+    #Unweighted_Adj_Square[np.where(Unweighted_Adj_Square != 0)] = 1
+    index = np.where(Unweighted_Adj_Square != 0)
+    #index = np.where((Unweighted_Adj_Square - Unweighted_Adj) == 1)
     if len(index[0]) == 0:
         break
     
